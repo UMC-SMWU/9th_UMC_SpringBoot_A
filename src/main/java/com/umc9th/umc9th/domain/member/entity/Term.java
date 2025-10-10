@@ -1,6 +1,5 @@
 package com.umc9th.umc9th.domain.member.entity;
 
-import com.umc9th.umc9th.domain.member.enums.FoodName;
 import com.umc9th.umc9th.domain.member.enums.TermName;
 import com.umc9th.umc9th.global.common.BaseEntity;
 import jakarta.persistence.*;
