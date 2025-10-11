@@ -14,7 +14,7 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 @Entity
 @Table(name = "reviews")
@@ -45,6 +45,7 @@ public class Review extends BaseTimeEntity {
 	private String content; // text
 
 
+	@Builder.Default
 	@OneToMany(mappedBy = "review", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ReviewPhoto> photos = new ArrayList<>();
 }

@@ -15,7 +15,7 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 @Entity
 @Table(name = "users", uniqueConstraints = {
@@ -41,19 +41,19 @@ public class User extends BaseTimeEntity {
 	@Column(length = 50, nullable = false)
 	private String name;
 
-
+	@Builder.Default
 	@Column(nullable = false)
 	private Integer point = 0;
 
-
+	@Builder.Default
 	@OneToMany(mappedBy = "user")
 	private List<Review> reviews = new ArrayList<>();
 
-
+	@Builder.Default
 	@OneToMany(mappedBy = "user")
 	private List<UserMission> userMissions = new ArrayList<>();
 
-
+	@Builder.Default
 	@OneToMany(mappedBy = "user")
 	private List<RegionBonus> regionBonuses = new ArrayList<>();
 }

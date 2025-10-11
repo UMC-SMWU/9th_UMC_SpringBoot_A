@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
+
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +16,7 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 @Entity
 @Table(name = "missions")
@@ -43,10 +45,12 @@ public class Mission extends CreatedAtEntity {
 	private LocalDate deadline; // nullable 허용
 
 
+	@Builder.Default
 	@Column(name = "base_point", nullable = false)
 	private Integer basePoint = 0;
 
 
+	@Builder.Default
 	@OneToMany(mappedBy = "mission")
 	private List<UserMission> userMissions = new ArrayList<>();
 }

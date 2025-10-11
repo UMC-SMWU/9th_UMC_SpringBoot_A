@@ -7,13 +7,14 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 @Entity
 @Table(name = "locations")
@@ -29,11 +30,11 @@ public class Location {
 	@Column(length = 100, nullable = false, unique = true)
 	private String name;
 
-
+	@Builder.Default
 	@OneToMany(mappedBy = "location")
 	private List<Store> stores = new ArrayList<>();
 
-
+	@Builder.Default
 	@OneToMany(mappedBy = "location")
 	private List<RegionBonus> regionBonuses = new ArrayList<>();
 }

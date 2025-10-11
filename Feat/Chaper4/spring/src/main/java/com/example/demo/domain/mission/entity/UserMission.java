@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 @Entity
 @Table(name = "user_missions", indexes = {
@@ -47,6 +47,7 @@ public class UserMission extends CreatedAtEntity {
 	private LocalDateTime completedAt; // nullable
 
 
+	@Builder.Default
 	@Column(name = "earned_point", nullable = false)
 	private Integer earnedPoint = 0;
 }

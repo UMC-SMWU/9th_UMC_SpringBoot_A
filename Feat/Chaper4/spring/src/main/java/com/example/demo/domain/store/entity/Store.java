@@ -15,7 +15,7 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 @Entity
 @Table(name = "stores")
@@ -41,10 +41,12 @@ public class Store extends BaseTimeEntity {
 	private String address;
 
 
+	@Builder.Default
 	@OneToMany(mappedBy = "store")
 	private List<Mission> missions = new ArrayList<>();
 
 
+	@Builder.Default
 	@OneToMany(mappedBy = "store")
 	private List<Review> reviews = new ArrayList<>();
 }

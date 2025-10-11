@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 @Entity
 @Table(name = "region_bonus", indexes = {
@@ -40,6 +40,7 @@ public class RegionBonus {
 
 	@Column(name = "bonus_point", nullable = false)
 	private Integer bonusPoint;
+
 
 
 	@Column(name = "awarded_at")
