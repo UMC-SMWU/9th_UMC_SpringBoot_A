@@ -2,10 +2,17 @@ package com.example.umc9th.domain.member.entity;
 
 import com.example.umc9th.domain.member.enums.Gender;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "User")
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Builder
 public class Member {
 
     @Id
