@@ -13,19 +13,19 @@ public class Member {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(nullable = false, length = 30)
+    @Column(name = "email", nullable = false, length = 30)
     private String email;
 
-    @Column(nullable = false, length = 30)
+    @Column(name = "password", nullable = false, length = 30)
     private String password;
 
-    @Column(nullable = false, length = 10)
+    @Column(name = "name", nullable = false, length = 10)
     private String name;
 
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
-    @Column(length = 255)
+    @Column(name = "address", length = 255)
     private String address;
 
     @Column(name="gender")
