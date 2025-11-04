@@ -20,10 +20,10 @@ public interface UserMissionRepository extends JpaRepository<UserMission, Long> 
         join m.store s
         where um.user.id = :userId
           and um.status   = :status
-        order by um.createdAt desc //최근에 배정(또는 상태 변경)된 순으로 정렬
+        order by um.createdAt desc 
         """,
 		countQuery = """
-        select count(um.id)// 페이징 total 계산 조인제거로 가볍게 함
+        select count(um.id)
         from UserMission um
         where um.user.id = :userId
           and um.status   = :status
