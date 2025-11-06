@@ -27,22 +27,22 @@ public class ReviewQueryRepositoryImpl implements ReviewQueryRepository {
 
 		// 조건 빌드
 		BooleanBuilder where = new BooleanBuilder();
-		where.and(r.user.id.eq(userId));
+		where.and(r.user.id.eq(userId)); // 내 리뷰만 r.user.id == userId
 
 		if (cond != null) {
-			if (cond.storeId() != null) {
+			if (cond.storeId() != null) { //storeId
 				where.and(r.store.id.eq(cond.storeId()));
 			}
-			if (cond.storeName() != null && !cond.storeName().isBlank()) {
-				where.and(s.name.containsIgnoreCase(cond.storeName().trim()));
+			if (cond.storeName() != null && !cond.storeName().isBlank()) { //storeNmae이 있으면
+				where.and(s.name.containsIgnoreCase(cond.storeName().trim())); //대소문자 무시
 			}
-			if (cond.ratingBand() != null) {
+			if (cond.ratingBand() != null) { //별점 구간 필터 적용
 				int b = cond.ratingBand();
 				if (b == 5) {
 					where.and(r.star.eq(5.0f));
 				} else {
-					float lo = b;
-					float hi = b + 1;
+					float lo = b; //하한 (>=)
+					float hi = b + 1; //상한 (<)
 					where.and(r.star.goe(lo).and(r.star.lt(hi)));
 				}
 			}
@@ -57,10 +57,10 @@ public class ReviewQueryRepositoryImpl implements ReviewQueryRepository {
 				)
 			)
 			.from(r)
-			.join(r.store, s)
+			.join(r.store, s) //가게명 필터/표시용 조인
 			.where(where)
-			.orderBy(r.createdAt.desc(), r.id.desc())
-			.offset(pageable.getOffset())
+			.orderBy(r.createdAt.desc(), r.id.desc()) //최신순
+			.offset(pageable.getOffset()) //페이지네이션
 			.limit(pageable.getPageSize())
 			.fetch();
 
@@ -68,7 +68,7 @@ public class ReviewQueryRepositoryImpl implements ReviewQueryRepository {
 
 
 
-		// DTO 조립
+		// DTO 매핑
 		List<MyReviewItemDto> content = rows.stream()
 			.map(row -> new MyReviewItemDto(
 				row.reviewId(),
