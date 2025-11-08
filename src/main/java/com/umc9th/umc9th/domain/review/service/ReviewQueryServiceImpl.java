@@ -15,6 +15,7 @@ public class ReviewQueryServiceImpl implements ReviewQueryService {
     private final ReviewRepository reviewRepository;
 
     // 쿼리 테스트
+    @Override
     public List<Review> searchReview(String query, String type){
         // Q클래스 정의
         QReview review = QReview.review;
