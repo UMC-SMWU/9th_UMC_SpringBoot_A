@@ -3,6 +3,7 @@ package com.umc9th.umc9th.global.apiPayload;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.umc9th.umc9th.global.apiPayload.code.BaseErrorCode;
+import com.umc9th.umc9th.global.apiPayload.code.BaseSuccessCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -24,7 +25,7 @@ public class ApiResponse<T> {
     private T result;
 
         // 성공한 경우 (result 포함)
-        public static <T> ApiResponse<T> onSuccess(BaseErrorCode code, T result) {
+        public static <T> ApiResponse<T> onSuccess(BaseSuccessCode code, T result) {
             return new ApiResponse<>(true, code.getCode(), code.getMessage(), result);
         }
 
