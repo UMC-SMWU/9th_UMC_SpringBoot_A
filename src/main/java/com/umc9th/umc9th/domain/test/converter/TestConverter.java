@@ -11,4 +11,10 @@ public class TestConverter {
                 .testing(testing)
                 .build();
     }
+
+    public static TestResponseDTO.Exception toExceptionDTO(String testing){
+        return TestResponseDTO.Exception.builder()
+                .testString(testing)
+                .build();
+    }
 }
