@@ -6,7 +6,6 @@ import com.umc9th.umc9th.domain.review.entity.QReview;
 import com.umc9th.umc9th.domain.review.entity.Review;
 import com.umc9th.umc9th.domain.store.entity.QLocation;
 import com.umc9th.umc9th.domain.store.entity.QStore;
-import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -14,18 +13,18 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class ReviewQueryDslImp implements ReviewQueryDsl{
-    private final ReviewRepository reviewRepository;
-    private final EntityManager em;
+public class ReviewQueryDslImpl implements ReviewQueryDsl{
+
+    private final JPAQueryFactory queryFactory;
+
+//    private final EntityManager em;
+//    JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
     // 검색 API
     @Override
     public List<Review> searchReview(
         Predicate predicate
     ){
-        // JPA 세팅
-        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-
         // Q클래스 선언
         QReview review = QReview.review;
         QStore store = QStore.store;
