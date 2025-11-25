@@ -18,9 +18,4 @@ public class Umc9thApplication {
 		SpringApplication.run(Umc9thApplication.class, args);
 	}
 
-	@Bean
-	JPAQueryFactory jpaQueryFactory(EntityManager em) {
-		return new JPAQueryFactory(em);
-	}
-
 }

@@ -1,0 +1,38 @@
+package com.umc9th.umc9th.domain.test.controller;
+
+import com.umc9th.umc9th.domain.test.converter.TestConverter;
+import com.umc9th.umc9th.domain.test.dto.response.TestResponseDTO;
+import com.umc9th.umc9th.domain.test.service.query.TestQueryService;
+import com.umc9th.umc9th.global.apiPayload.ApiResponse;
+import com.umc9th.umc9th.global.apiPayload.code.GeneralSuccessCode;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/temp")
+public class TestController {
+    private final TestQueryService testQueryService;
+
+    @GetMapping("/test")
+    public ApiResponse<TestResponseDTO.Testing> test() throws Exception{
+        // 응답 코드 정의
+        GeneralSuccessCode code = GeneralSuccessCode.OK;
+        return ApiResponse.onSuccess(
+                code, TestConverter.toTestingDTO("This is Test!")
+        );
+    }
+
+    // 예외 상황
+    @GetMapping("/exception")
+    public ApiResponse<TestResponseDTO.Exception> exception(@RequestParam Long flag) throws Exception{
+        testQueryService.checkFlag(flag);
+
+        // 응답 코드 정의
+        GeneralSuccessCode code = GeneralSuccessCode.OK;
+        return ApiResponse.onSuccess(code, TestConverter.toExceptionDTO("This is Exception!"));
+    }
+}
