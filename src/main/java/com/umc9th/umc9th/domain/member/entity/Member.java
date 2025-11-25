@@ -51,7 +51,8 @@ public class Member extends BaseEntity {
     private SocialType socialType;
 
     @Column(name = "point", nullable = false)
-    private Integer point;
+    @Builder.Default
+    private Integer point = 0;
 
     @Column(name = "email", nullable = false)
     private String email;
@@ -60,9 +61,11 @@ public class Member extends BaseEntity {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "member")
+    @Builder.Default
     private List<MemberFood> memberFoods = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
+    @Builder.Default
     private List<MemberTerm> memberTerms = new ArrayList<>();
 
 }

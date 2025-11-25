@@ -1,5 +1,6 @@
 package com.umc9th.umc9th.domain.member.entity.mapping;
 
+import com.umc9th.umc9th.domain.member.entity.Food;
 import com.umc9th.umc9th.domain.member.entity.Member;
 import com.umc9th.umc9th.domain.member.entity.Term;
 import com.umc9th.umc9th.global.common.BaseEntity;
@@ -23,7 +24,7 @@ public class MemberFood extends BaseEntity {
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "term_id")
-    private Term term;
+    @JoinColumn(name = "food_id")
+    private Food food;
 
 }
