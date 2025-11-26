@@ -1,6 +1,4 @@
 package com.example.umc9th.domain.member.entity;
-
-import com.example.umc9th.domain.member.enums.Gender;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -35,9 +33,6 @@ public class Member {
     @Column(name = "address", length = 255)
     private String address;
 
-    @Column(name="gender")
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

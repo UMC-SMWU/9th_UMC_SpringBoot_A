@@ -32,8 +32,6 @@ public class QMember extends EntityPathBase<Member> {
 
     public final StringPath email = createString("email");
 
-    public final EnumPath<com.example.umc9th.domain.member.enums.Gender> gender = createEnum("gender", com.example.umc9th.domain.member.enums.Gender.class);
-
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final StringPath name = createString("name");
