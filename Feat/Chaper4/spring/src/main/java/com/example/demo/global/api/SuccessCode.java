@@ -13,11 +13,15 @@ public enum SuccessCode {
 	DELETE_SUCCESS(HttpStatus.OK, "S004", "삭제 성공"),
 
 	// 내 리뷰 조회 전용 코드
-	GET_MY_REVIEWS_SUCCESS(HttpStatus.OK, "R001", "내 리뷰 목록 조회 성공");
+	GET_MY_REVIEWS_SUCCESS(HttpStatus.OK, "R001", "내 리뷰 목록 조회 성공"),
+
+	CREATE_REVIEW_SUCCESS(HttpStatus.CREATED, "S202", "리뷰 등록 성공"),
+	CHALLENGE_MISSION_SUCCESS(HttpStatus.CREATED, "S204", "미션 도전 성공");
 
 	private final HttpStatus httpStatus;
 	private final String code;
 	private final String message;
+
 
 	SuccessCode(HttpStatus httpStatus, String code, String message) {
 		this.httpStatus = httpStatus;

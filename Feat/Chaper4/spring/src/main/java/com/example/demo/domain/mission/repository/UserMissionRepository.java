@@ -9,6 +9,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface UserMissionRepository extends JpaRepository<UserMission, Long> {
 
+
+
 	@Query(value = """
         select new com.example.demo.dto.UserMissionItemDto(
             um.id, um.status, um.createdAt, um.completedAt,
@@ -53,5 +55,7 @@ public interface UserMissionRepository extends JpaRepository<UserMission, Long> 
         """)
 	long countCompletedInLocation(@Param("userId") Long userId,
 		@Param("locationId") Long locationId);
+
+	boolean existsByUserIdAndMissionId(Long userId, Long missionId);
 }
 
