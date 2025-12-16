@@ -31,7 +31,9 @@ public class QReview extends EntityPathBase<Review> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final NumberPath<java.math.BigDecimal> rating = createNumber("rating", java.math.BigDecimal.class);
+    public final com.example.umc9th.domain.member.entity.QMember member;
+
+    public final NumberPath<Integer> star = createNumber("star", Integer.class);
 
     public final com.example.umc9th.domain.store.entity.QStore store;
 
@@ -53,6 +55,7 @@ public class QReview extends EntityPathBase<Review> {
 
     public QReview(Class<? extends Review> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.member = inits.isInitialized("member") ? new com.example.umc9th.domain.member.entity.QMember(forProperty("member")) : null;
         this.store = inits.isInitialized("store") ? new com.example.umc9th.domain.store.entity.QStore(forProperty("store")) : null;
     }
 

@@ -6,6 +6,7 @@ import com.example.umc9th.domain.mission.dto.req.MissionReqDTO;
 import com.example.umc9th.domain.mission.dto.res.MissionResDTO;
 import com.example.umc9th.domain.mission.entity.Mission;
 import com.example.umc9th.domain.mission.entity.UserMission;
+import com.example.umc9th.domain.mission.entity.enums.MissionStatus;
 import com.example.umc9th.domain.mission.repository.MissionRepository;
 import com.example.umc9th.domain.mission.repository.UserMissionRepository;
 import lombok.RequiredArgsConstructor;
@@ -32,16 +33,17 @@ public class MissionService {
         UserMission userMission = UserMission.builder()
                 .member(member)
                 .mission(mission)
-                .startedAt(LocalDateTime.now())
+                .status(MissionStatus.IN_PROGRESS)
+                .assignedAt(LocalDateTime.now())
                 .build();
 
         userMissionRepository.save(userMission);
 
         return MissionResDTO.AddMissionDTO.builder()
-                .userMissionId(userMission.getId())
+                .userMissionId(userMission.getUserMissionsId())
                 .memberId(member.getId())
                 .missionId(mission.getId())
-                .startedAt(userMission.getStartedAt())
+                .assignedAt(userMission.getAssignedAt())
                 .build();
     }
 }
