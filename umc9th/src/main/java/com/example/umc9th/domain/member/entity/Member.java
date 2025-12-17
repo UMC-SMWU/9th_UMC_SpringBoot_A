@@ -1,4 +1,5 @@
 package com.example.umc9th.domain.member.entity;
+import com.example.umc9th.global.auth.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,7 +19,7 @@ public class Member {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(name = "email", nullable = false, length = 30)
+    @Column(name = "email", nullable = false, unique = true, length = 30)
     private String email;
 
     @Column(name = "password", nullable = false, length = 30)
@@ -45,5 +46,8 @@ public class Member {
 
     @Column(name = "phone_number", length = 20)
     private String phoneNumber;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
 }

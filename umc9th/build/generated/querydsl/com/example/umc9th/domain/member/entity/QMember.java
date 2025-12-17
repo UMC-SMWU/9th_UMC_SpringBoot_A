@@ -40,6 +40,8 @@ public class QMember extends EntityPathBase<Member> {
 
     public final StringPath phoneNumber = createString("phoneNumber");
 
+    public final EnumPath<com.example.umc9th.global.auth.enums.Role> role = createEnum("role", com.example.umc9th.global.auth.enums.Role.class);
+
     public final DateTimePath<java.time.LocalDateTime> updatedAt = createDateTime("updatedAt", java.time.LocalDateTime.class);
 
     public QMember(String variable) {
