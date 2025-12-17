@@ -34,6 +34,8 @@ public class Member {
     @Column(name = "address", length = 255)
     private String address;
 
+    @Column(nullable = false)
+    private String specAddress;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
