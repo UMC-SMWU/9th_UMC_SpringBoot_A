@@ -15,4 +15,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
         where u.id = :userId
         """)
 	Optional<MyPageDto> findMyPage(@Param("userId") Long userId);
+
+	Optional<User> findByEmail(String email);
+	boolean existsByEmail(String email);
 }

@@ -16,6 +16,9 @@ spring:
     console:
       enabled: true
       path: /h2-console
+  jwt:
+    secret: "hdjfkahklahdlkfhs_adjkfhksahfkljsadhfklj_hsaf_"
+    access-exp-ms: 900000   # 15분
 
 logging:
   level:
