@@ -1,5 +1,7 @@
 package com.example.demo.domain.mission.repository;
 
+import java.util.Optional;
+
 import com.example.demo.domain.mission.entity.UserMission;
 import com.example.demo.domain.mission.constant.UserMissionStatus;
 import com.example.demo.dto.UserMissionItemDto;
@@ -9,7 +11,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface UserMissionRepository extends JpaRepository<UserMission, Long> {
 
-
+	@EntityGraph(attributePaths = {"user", "mission", "mission.store"})
+	Optional<UserMission> findWithAllById(Long userMissionId);
 
 	@Query(value = """
         select new com.example.demo.dto.UserMissionItemDto(

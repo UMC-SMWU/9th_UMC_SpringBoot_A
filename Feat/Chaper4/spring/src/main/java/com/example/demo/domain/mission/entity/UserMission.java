@@ -50,4 +50,10 @@ public class UserMission extends CreatedAtEntity {
 	@Builder.Default
 	@Column(name = "earned_point", nullable = false)
 	private Integer earnedPoint = 0;
+
+	public void complete(int earnedPoint, LocalDateTime completedAt) {
+		this.status = UserMissionStatus.COMPLETED;
+		this.earnedPoint = earnedPoint;
+		this.completedAt = completedAt;
+	}
 }

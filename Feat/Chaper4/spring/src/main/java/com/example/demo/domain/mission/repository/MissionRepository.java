@@ -11,6 +11,10 @@ import java.time.LocalDate;
 
 public interface MissionRepository extends JpaRepository<Mission, Long> {
 
+	@EntityGraph(attributePaths = {"store"})
+	Page<Mission> findByStoreId(Long storeId, Pageable pageable);
+
+
 	@Query(value = """
 		select new com.example.demo.dto.HomeMissionItemDto(
 		    m.id, m.title, m.condition, m.deadline, m.basePoint,
